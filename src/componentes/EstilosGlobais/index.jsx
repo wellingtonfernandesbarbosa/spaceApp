@@ -5,7 +5,7 @@ import GandhiSansBold from './fontes/GandhiSans-Bold.otf';
 const EstilosGlobais = createGlobalStyle`
 @font-face {
   font-family: 'GandhiSansRegular';
-  src: local('Gandhi Sans Regular'), local('Gandhi Sans Regular'), url(${GandhiSansRegular});
+  src: local('Gandhi Sans Regular'), local('GandhiSansRegular'), url(${GandhiSansRegular});
 }
 
 @font-face {

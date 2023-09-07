@@ -11,7 +11,6 @@ const InputEstilizado = styled.input`
     padding: 16px 12px;
     background-color: transparent;
     font-size: 20px;
-    font-family: 'Gandhi Sans Regular';
     
     &::placeholder {
         color: #D9D9D9;

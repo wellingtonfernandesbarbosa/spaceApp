@@ -9,7 +9,7 @@ const ItemListaEstilizado = styled.li`
     font-size: 24px;
     cursor: pointer;
     color: ${ props => props.$ativo ? '#7B78E5' : '#D9D9D9'};
-    font-family: ${ props => props.$ativo ? 'Gandhi Sans Bold' : 'Gandhi Sans Regular'};
+    font-family: ${ props => props.$ativo ? 'GandhiSansBold' : 'GandhiSansRegular'};
 
 `;
 
