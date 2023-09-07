@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
 import EstilosGlobais from "./componentes/EstilosGlobais"
+import Cabecalho from "./Cabecalho"
 
 const FuncoGradiente = styled.div `
   background: var(--Gradiente-fundo, linear-gradient(175deg, #041833 4.16%, #04244F 48%, #154580 96.76%));
@@ -12,6 +13,7 @@ function App() {
   return (
     <FuncoGradiente>
       <EstilosGlobais />
+      <Cabecalho />
     </FuncoGradiente>
   )
 }
