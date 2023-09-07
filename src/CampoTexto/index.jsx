@@ -1,26 +1,37 @@
 import { styled } from "styled-components";
 
+const ContainerEstilizado = styled.div``
+
 const InputEstilizado = styled.input`
-    width: 502px;
-    height: 26px;
+    width: 566px;
+    height: 56px;
     border-radius: 10px;
     border: 2px solid var(--Degrad-com-rosa, #C98CF1);
+    box-sizing: border-box;
+    padding: 16px 12px;
+    background-color: transparent;
     font-size: 20px;
-    padding: 16px;
-    color: #D9D9D9;
+    font-family: 'Gandhi Sans Regular';
+    
     &::placeholder {
         color: #D9D9D9;
     }
-    background-color: transparent;
-    background-image: url('./imagens/search.png');
-    background-repeat: no-repeat;
-    background-size: 40px 40px;
-    background-position: right 10px top 10px;
+`
+
+const IconeLupa = styled.img`
+    position: absolute;
+    top: 77px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
 `
 
 const CampoTexto = () => {
     return (
-        <InputEstilizado placeholder="O que você procura?" />
+        <ContainerEstilizado>
+            <InputEstilizado placeholder="O que você procura?" />
+            <IconeLupa src="./imagens/search.png" alt="Ícone de Lupa"/>
+        </ContainerEstilizado>
     )
 }
 
