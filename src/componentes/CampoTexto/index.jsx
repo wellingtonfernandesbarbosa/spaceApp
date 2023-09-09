@@ -1,25 +1,29 @@
 import { styled } from "styled-components";
 
-const ContainerEstilizado = styled.div``
+const ContainerEstilizado = styled.div`
+position: relative;
+    display: inline-block;`
 
 const InputEstilizado = styled.input`
     width: 566px;
     height: 56px;
-    border-radius: 10px;
-    border: 2px solid var(--Degrad-com-rosa, #C98CF1);
     box-sizing: border-box;
-    padding: 16px 12px;
-    background-color: transparent;
+    border-radius: 10px;
+    padding: 12px 16px;
+
+    border: 2px solid;
+    border-color: #C98CF1;
+    background: transparent;
+
     font-size: 20px;
-    
-    &::placeholder {
-        color: #D9D9D9;
-    }
+    font-weight: 400;
+    line-height: 20px;
+    color: #D9D9D9;
 `
 
 const IconeLupa = styled.img`
     position: absolute;
-    top: 77px;
+    top: 10px;
     right: 10px;
     width: 38px;
     height: 38px;

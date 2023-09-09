@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import GandhiSansRegular from './fontes/GandhiSans-Regular.otf';
-import GandhiSansBold from './fontes/GandhiSans-Bold.otf';
+import GandhiSansRegular from "./fontes/GandhiSans-Regular.otf";
+import GandhiSansBold from "./fontes/GandhiSans-Bold.otf";
 
 const EstilosGlobais = createGlobalStyle`
 @font-face {
@@ -115,6 +115,7 @@ button,
 [type="reset"],
 [type="submit"] {
     -webkit-appearance: button;
+    appearance: button;
 }
 
 button::-moz-focus-inner,
@@ -166,6 +167,7 @@ textarea {
 
 [type="search"] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -193,5 +195,5 @@ template {
 [hidden] {
   display: none;
 } 
-`
-export default EstilosGlobais
+`;
+export default EstilosGlobais;
