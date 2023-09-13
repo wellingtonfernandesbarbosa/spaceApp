@@ -3,6 +3,7 @@ import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLateral";
 import Banner from "./componentes/Banner";
+import Galeria from "./componentes/Galeria";
 import bannerBackground from "./assets/banner.png";
 
 const FuncoGradiente = styled.div`
@@ -44,6 +45,7 @@ function App() {
               texto="A galeria mais completa de fotos do espaço!"
               backgroundImage={bannerBackground}
             />
+            <Galeria texto="Navegue pela galeria" />
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
