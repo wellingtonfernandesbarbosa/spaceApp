@@ -6,6 +6,9 @@ import Banner from "./componentes/Banner";
 import Galeria from "./componentes/Galeria";
 import bannerBackground from "./assets/banner.png";
 
+import fotos from './fotos.json'
+import { useState } from "react";
+
 const FuncoGradiente = styled.div`
   background: var(
     --Gradiente-fundo,
@@ -33,6 +36,7 @@ const ConteudoGaleria = styled.section`
 `;
 
 function App() {
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos)
   return (
     <FuncoGradiente>
       <EstilosGlobais />
@@ -45,7 +49,7 @@ function App() {
               texto="A galeria mais completa de fotos do espaço!"
               backgroundImage={bannerBackground}
             />
-            <Galeria texto="Navegue pela galeria" />
+            <Galeria texto="Navegue pela galeria" fotos={fotosDaGaleria}/>
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
