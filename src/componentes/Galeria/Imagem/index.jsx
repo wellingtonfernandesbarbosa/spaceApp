@@ -1,78 +1,68 @@
 import { AiFillHeart } from "react-icons/ai";
 import { CgExpand } from "react-icons/cg";
 import styled from "styled-components";
+import BotaoIcone from "../../BotaoIcone";
 
-const ImagemContainer = styled.figure`
-  width: 448px;
+const Figure = styled.figure`
+  display: flex;
+  flex-direction: column;
+  width: ${(props) => (props.$expandida ? "90%" : "460px")};
+  max-width: 100%;
   margin: 0;
-`;
 
-const Foto = styled.img`
-  width: 100%;
-  border-radius: 20px 20px 0 0;
-  height: 256px;
-`;
+  & > img {
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+  }
 
-const Titulo = styled.h3`
-  margin: 0px;
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-`;
+  figcaption {
+    background-color: #001634;
+    border-radius: 0 0 20px 20px;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 16px;
 
-const Fonte = styled.p`
-  margin: 0px;
-  font-size: 20px;
-  padding-top: 8px;
-  color: #FFFFFF;
+    h3 {
+      font-family: "GandhiSansBold";
+    }
+
+    h4 {
+      flex-grow: 1;
+    }
+
+    h3,
+    h4 {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
 `;
 
 const Rodape = styled.footer`
   display: flex;
-  background-color: #001634;
-  margin-top: -6px;
-  border-radius: 0 0 20px 20px;
-  padding: 16px;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-const Botao = styled.button`
-  background-color: transparent;
-  border: none;
-  padding: 0px;
-`;
-
-const RodapeDescricao = styled.div`
-  flex-grow: 1;
-`;
-
-const RodapeIcones = styled.div`
-  display: flex;
-  gap: 24px;
-  align-items: end;
-`;
-
-const Imagem = ({ foto }) => {
+const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
   return (
-    <ImagemContainer>
-      <Foto src={foto.path} alt={foto.titulo} />
+    <Figure $expandida={expandida} id={`foto-${foto.id}`}>
+      <img src={foto.path} alt={foto.titulo} />
       <figcaption>
+        <h3>{foto.titulo}</h3>
         <Rodape>
-          <RodapeDescricao>
-            <Titulo>{foto.titulo}</Titulo>
-            <Fonte>Fonte: {foto.fonte}</Fonte>
-          </RodapeDescricao>
-          <RodapeIcones>
-            <Botao>
-              <AiFillHeart color="#FFFFFF" size={24} />
-            </Botao>
-            <Botao>
-              <CgExpand color="#FFFFFF" size={24} />
-            </Botao>
-          </RodapeIcones>
+          <h4>Fonte: {foto.fonte}</h4>
+          <BotaoIcone>
+            <img src="./icones/favorito.png" alt="Ícone de favoritar" />
+          </BotaoIcone>
+          {!expandida && (
+            <BotaoIcone aria-hidden={expandida}>
+              <img src="./icones/expandir.png" alt="Ícone de favoritar" />
+            </BotaoIcone>
+          )}
         </Rodape>
       </figcaption>
-    </ImagemContainer>
+    </Figure>
   );
 };
 

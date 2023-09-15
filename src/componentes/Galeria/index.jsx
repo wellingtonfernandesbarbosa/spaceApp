@@ -20,7 +20,7 @@ const ImagensContainer = styled.div`
   justify-content: space-between;
 `;
 
-const Galeria = ({ texto, fotos = [] }) => {
+const Galeria = ({ texto, fotos = [], aoFotoSelecionada }) => {
   return (
     <>
       <Tags />
@@ -29,13 +29,15 @@ const Galeria = ({ texto, fotos = [] }) => {
           <Titulo>{texto}</Titulo>
           <ImagensContainer>
             {fotos.map((foto) => (
-              <Imagem key={foto.id} foto={foto}></Imagem>
+              <Imagem
+                aoZoomSolicitado={aoFotoSelecionada}
+                key={foto.id}
+                foto={foto}
+              ></Imagem>
             ))}
           </ImagensContainer>
         </SecaoFluida>
-        <Populares>
-
-        </Populares>
+        <Populares></Populares>
       </GaleriaContainer>
     </>
   );
