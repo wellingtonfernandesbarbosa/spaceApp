@@ -6,6 +6,7 @@ import Banner from "./componentes/Banner";
 import Galeria from "./componentes/Galeria";
 import bannerBackground from "./assets/banner.png";
 
+import ModalZoom from "./componentes/ModalZoom";
 
 import fotos from "./fotos.json";
 import { useState } from "react";
@@ -39,6 +40,23 @@ const ConteudoGaleria = styled.section`
 function App() {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+
+  const aoAlternarFavorito = (foto) => {
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita,
+      });
+    }
+    setFotosDaGaleria(fotosDaGaleria.map(fotoDaGaleria => {
+      return {
+        ...fotoDaGaleria,
+        favorita:
+          fotoDaGaleria.id === foto.id? !foto.favorita : fotoDaGaleria.favorita
+      };
+    }));
+  };
+
   return (
     <FuncoGradiente>
       <EstilosGlobais />
@@ -52,13 +70,19 @@ function App() {
               backgroundImage={bannerBackground}
             />
             <Galeria
-              aoFotoSelecionanda={foto => setFotoSelecionada(foto)}
+              aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
               texto="Navegue pela galeria"
               fotos={fotosDaGaleria}
+              aoAlternarFavorito={aoAlternarFavorito}
             />
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
+      <ModalZoom
+        foto={fotoSelecionada}
+        aoFechar={() => setFotoSelecionada(null)}
+        aoAlternarFavorito={aoAlternarFavorito}
+      />
     </FuncoGradiente>
   );
 }

@@ -6,7 +6,6 @@ import Imagem from "./Imagem";
 
 const GaleriaContainer = styled.div`
   display: flex;
-  gap: 24px;
 `;
 
 const SecaoFluida = styled.section`
@@ -17,10 +16,15 @@ const ImagensContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `;
 
-const Galeria = ({ texto, fotos = [], aoFotoSelecionada }) => {
+const Galeria = ({
+  texto,
+  fotos = [],
+  aoFotoSelecionada,
+  aoAlternarFavorito,
+}) => {
   return (
     <>
       <Tags />
@@ -33,11 +37,12 @@ const Galeria = ({ texto, fotos = [], aoFotoSelecionada }) => {
                 aoZoomSolicitado={aoFotoSelecionada}
                 key={foto.id}
                 foto={foto}
+                aoAlternarFavorito={aoAlternarFavorito}
               ></Imagem>
             ))}
           </ImagensContainer>
         </SecaoFluida>
-        <Populares></Populares>
+        <Populares />
       </GaleriaContainer>
     </>
   );
