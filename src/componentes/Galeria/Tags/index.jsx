@@ -31,13 +31,13 @@ const ItemTags = styled.button`
   }
 `;
 
-const Tags = () => {
+const Tags = ({setTag}) => {
   return (
     <TagsContainer>
       <TituloTags>Busque por tags:</TituloTags>
-      {tags.map((tag) => (
-        <ItemTags key={tag.id}>{tag.titulo}</ItemTags>
-      ))}
+      {tags.map(tag => 
+        <ItemTags key={tag.id} onClick={() => setTag(tag.id)}>{tag.titulo}</ItemTags>
+      )}
     </TagsContainer>
   );
 };

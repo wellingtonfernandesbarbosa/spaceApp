@@ -24,10 +24,11 @@ const Galeria = ({
   fotos = [],
   aoFotoSelecionada,
   aoAlternarFavorito,
+  setTag
 }) => {
   return (
     <>
-      <Tags />
+      <Tags setTag={setTag}/>
       <GaleriaContainer>
         <SecaoFluida>
           <Titulo>{texto}</Titulo>

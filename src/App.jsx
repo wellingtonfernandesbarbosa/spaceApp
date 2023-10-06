@@ -9,7 +9,7 @@ import bannerBackground from "./assets/banner.png";
 import ModalZoom from "./componentes/ModalZoom";
 
 import fotos from "./fotos.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FuncoGradiente = styled.div`
   background: var(
@@ -17,7 +17,8 @@ const FuncoGradiente = styled.div`
     linear-gradient(175deg, #041833 4.16%, #04244f 48%, #154580 96.76%)
   );
   min-height: 100vh;
-  width: 100%;
+  width: auto;
+  padding: 0 8px;
 `;
 
 const AppContainer = styled.div`
@@ -40,6 +41,17 @@ const ConteudoGaleria = styled.section`
 function App() {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const [filtro, setFiltro] = useState('')
+  const [tag, setTag] = useState(0)
+
+  useEffect(() => {
+    const fotosFiltradas = fotos.filter(foto => {
+      const filtroPorTag = !tag || foto.tagId === tag;
+      const filtroPorTitulo = !filtro || foto.titulo.toLowerCase().includes(filtro.toLowerCase());
+      return tag === 5 ? foto.id > 0 : filtroPorTag && filtroPorTitulo;
+    })
+    setFotosDaGaleria(fotosFiltradas);
+  }, [filtro, tag])
 
   const aoAlternarFavorito = (foto) => {
     if (foto.id === fotoSelecionada?.id) {
@@ -61,7 +73,7 @@ function App() {
     <FuncoGradiente>
       <EstilosGlobais />
       <AppContainer>
-        <Cabecalho />
+        <Cabecalho  setFiltro={setFiltro}/>
         <MainContainer>
           <BarraLateral />
           <ConteudoGaleria>
@@ -74,11 +86,12 @@ function App() {
               texto="Navegue pela galeria"
               fotos={fotosDaGaleria}
               aoAlternarFavorito={aoAlternarFavorito}
+              setTag={setTag}
             />
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
-      <ModalZoom
+      <ModalZoom 
         foto={fotoSelecionada}
         aoFechar={() => setFotoSelecionada(null)}
         aoAlternarFavorito={aoAlternarFavorito}
